@@ -12,7 +12,7 @@ const Header = styled.div`
   text-align: center;
   max-width: 800px;
   margin: 0 auto 4rem;
-
+  
   h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -20,7 +20,7 @@ const Header = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
+  
   p {
     color: var(--text-light);
     font-size: 1.1rem;
@@ -40,7 +40,7 @@ const ContactInfo = styled.div`
     color: var(--dark);
     text-align: center;
   }
-
+  
   p {
     color: var(--text-light);
     margin-bottom: 2rem;
@@ -56,18 +56,18 @@ const ContactCard = styled(motion.div)`
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
-
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
   }
-
+  
   h3 {
     color: var(--dark);
     margin-bottom: 1rem;
     font-size: 1.4rem;
   }
-
+  
   .email {
     color: var(--primary);
     font-weight: 500;
@@ -75,7 +75,7 @@ const ContactCard = styled(motion.div)`
     display: block;
     font-size: 1.1rem;
   }
-
+  
   .response-time {
     color: var(--text-muted);
     font-size: 0.9rem;
@@ -103,7 +103,7 @@ function ContactPage() {
           Get in touch with our dedicated support teams
         </motion.p>
       </Header>
-
+      
       <ContactContent>
         <ContactInfo>
           <h2>Direct Contact</h2>
@@ -118,7 +118,7 @@ function ContactPage() {
             <span className="email">uavartemis@gmail.com</span>
             <span className="response-time">Response time: Within 24 hours</span>
           </ContactCard>
-
+          
           <ContactCard
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ function ContactPage() {
             <span className="email">uavartemis@gmail.com</span>
             <span className="response-time">Response time: Within 24 hours</span>
           </ContactCard>
-
+          
           <ContactCard
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
