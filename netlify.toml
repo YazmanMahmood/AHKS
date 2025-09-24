@@ -10,4 +10,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
+<<<<<<< HEAD
 
+=======
+>>>>>>> b3e8d8dc333e98714227c1a5482ed43ac9c5ab19
