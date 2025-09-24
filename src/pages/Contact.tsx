@@ -68,7 +68,6 @@ const Contact = () => {
                 <div className="space-y-1 sm:space-y-2 text-black text-sm sm:text-base font-normal">
                   <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
                   <p>Saturday: Closed</p>
-                  <p>Emergency Support: 24/7</p>
                 </div>
               </div>
             </div>
