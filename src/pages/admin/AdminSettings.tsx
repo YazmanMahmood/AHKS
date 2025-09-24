@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../../lib/supabase';
+import { supabase, isSupabaseEnabled } from '../../lib/supabase';
 import { useSiteSettings } from '../../hooks/useSupabaseData';
 import { Save, RefreshCw } from 'lucide-react';
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -20,6 +20,10 @@ const AdminSettings = () => {
     setMessage(null);
 
     try {
+      if (!isSupabaseEnabled) {
+        setMessage({ type: 'error', text: 'Supabase is not configured.' });
+        return;
+      }
       // Update each setting
       const updates = Object.entries(formData).map(([key, value]) =>
         supabase
