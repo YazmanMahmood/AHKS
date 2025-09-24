@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseEnabled } from '../lib/supabase';
 import type { SiteSetting, TeamMember, Project, DroneService, ContactInfo } from '../lib/supabase';
 
 export const useSiteSettings = () => {
@@ -10,6 +10,10 @@ export const useSiteSettings = () => {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
+        if (!isSupabaseEnabled) {
+          setSettings({});
+          return;
+        }
         const { data, error } = await supabase
           .from('site_settings')
           .select('*');
@@ -43,6 +47,10 @@ export const useTeamMembers = () => {
   useEffect(() => {
     const fetchTeamMembers = async () => {
       try {
+        if (!isSupabaseEnabled) {
+          setTeamMembers([]);
+          return;
+        }
         const { data, error } = await supabase
           .from('team_members')
           .select('*')
@@ -72,6 +80,10 @@ export const useProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
+        if (!isSupabaseEnabled) {
+          setProjects([]);
+          return;
+        }
         const { data, error } = await supabase
           .from('projects')
           .select('*')
@@ -101,6 +113,10 @@ export const useDroneServices = () => {
   useEffect(() => {
     const fetchDroneServices = async () => {
       try {
+        if (!isSupabaseEnabled) {
+          setDroneServices([]);
+          return;
+        }
         const { data, error } = await supabase
           .from('drone_services')
           .select('*')
@@ -130,6 +146,10 @@ export const useContactInfo = () => {
   useEffect(() => {
     const fetchContactInfo = async () => {
       try {
+        if (!isSupabaseEnabled) {
+          setContactInfo([]);
+          return;
+        }
         const { data, error } = await supabase
           .from('contact_info')
           .select('*')
