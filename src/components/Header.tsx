@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import logo from '../images/logo.png';
 
 const Header = () => {
@@ -8,6 +9,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -15,6 +17,8 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // No extra effect needed; splash handles initial logo motion
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -31,10 +35,11 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-4">
           <Link to="/" className="flex items-center group">
-            <img 
+            <motion.img 
               src={logo} 
-              alt="Logo" 
-              className="w-[8 rem] h-[4.5rem] object-contain" 
+              alt="Logo"
+              layoutId="ahks-logo"
+              className="w-[8rem] h-[4.5rem] object-contain"
             />
           </Link>
           

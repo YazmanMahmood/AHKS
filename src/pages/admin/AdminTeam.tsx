@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTeamMembers } from '../../hooks/useSupabaseData';
-import { supabase } from '../../lib/supabase';
+import { supabase, isSupabaseEnabled } from '../../lib/supabase';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import type { TeamMember } from '../../lib/supabase';
@@ -28,6 +28,7 @@ const AdminTeam = () => {
 
   const handleSave = async (id?: string) => {
     try {
+      if (!isSupabaseEnabled) return;
       if (id) {
         // Update existing member
         await supabase
@@ -59,6 +60,7 @@ const AdminTeam = () => {
   const handleDelete = async (id: string) => {
     if (confirm('Are you sure you want to delete this team member?')) {
       try {
+        if (!isSupabaseEnabled) return;
         await supabase
           .from('team_members')
           .update({ is_active: false })

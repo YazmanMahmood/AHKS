@@ -1,30 +1,7 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Users, Award } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin, Clock, Users, Award } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setFormData({ name: '', email: '', company: '', message: '' });
-  };
-
-  const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   return (
     <div className="min-h-screen pt-16 sm:pt-20 bg-white">
       {/* Hero Section */}
@@ -42,12 +19,12 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form and Info */}
+      {/* Contact Information */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+          <div className="grid grid-cols-1 gap-8 sm:gap-12">
             {/* Contact Information */}
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-6 sm:space-y-8 max-w-4xl mx-auto">
               <h2 className="text-2xl sm:text-3xl text-black mb-4 sm:mb-6 font-normal">Let's Start a Conversation</h2>
               
               <div className="space-y-4 sm:space-y-6">
@@ -67,8 +44,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-base sm:text-lg text-black mb-1 font-normal">Call Us</h3>
-                    <p className="text-black text-sm sm:text-base font-normal">+1 (555) 123-4567</p>
-                    <p className="text-black text-sm sm:text-base font-normal">+1 (555) 987-6543</p>
+                    <p className="text-black text-sm sm:text-base font-normal">+92 300 8446648</p>
                   </div>
                 </div>
 
@@ -92,97 +68,8 @@ const Contact = () => {
                 <div className="space-y-1 sm:space-y-2 text-black text-sm sm:text-base font-normal">
                   <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
                   <p>Saturday: Closed</p>
-                  <p>Emergency Support: 24/7</p>
                 </div>
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="bg-[#f0fdff] border border-[#237bff]/10 rounded-2xl p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl text-black mb-4 sm:mb-6 font-normal">Send Us a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-normal text-black mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-[#237bff]/20 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#237bff] focus:border-transparent text-sm sm:text-base"
-                      placeholder="Your Name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-normal text-black mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-[#237bff]/20 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#237bff] focus:border-transparent text-sm sm:text-base"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-normal text-black mb-2">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-[#237bff]/20 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#237bff] focus:border-transparent text-sm sm:text-base"
-                    placeholder="Your Company"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-normal text-black mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-[#237bff]/20 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#237bff] focus:border-transparent resize-none text-sm sm:text-base"
-                    placeholder="Tell us about your project or requirements..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitted}
-                  className="w-full bg-[#237bff] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-normal text-base sm:text-lg hover:bg-[#1a5cbf] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 touch-manipulation"
-                >
-                  {isSubmitted ? (
-                    <>
-                      <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5" />
-                      <span>Message Sent!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 sm:h-5 sm:w-5" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </button>
-              </form>
             </div>
           </div>
         </div>

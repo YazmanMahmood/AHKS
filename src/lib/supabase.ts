@@ -3,11 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
-}
+export const isSupabaseEnabled = Boolean(supabaseUrl && supabaseAnonKey);
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = isSupabaseEnabled
+  ? createClient(supabaseUrl as string, supabaseAnonKey as string)
+  : null as unknown as ReturnType<typeof createClient>;
 
 // Database types
 export interface SiteSetting {

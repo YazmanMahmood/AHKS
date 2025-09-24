@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import LogoSplash from './components/LogoSplash';
+import { LayoutGroup } from 'framer-motion';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollProgress from './components/ScrollProgress';
@@ -34,7 +36,8 @@ function App() {
           
           {/* Public Routes */}
           <Route path="/*" element={
-            <>
+            <LayoutGroup>
+              <LogoSplash />
               <ScrollProgress />
               <ScrollToTop />
               <Header />
@@ -46,7 +49,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
               </Routes>
               <Footer />
-            </>
+            </LayoutGroup>
           } />
         </Routes>
       </div>
